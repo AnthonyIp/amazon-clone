@@ -1,0 +1,47 @@
+.subheader {
+  background-color: #232f3e;
+  color: white;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: space-between;
+
+  .subheader__location {
+    display: flex;
+    align-items: center;
+    width: 165px;
+
+    .subheader__locationContainer {
+      display: flex;
+      flex-direction: column;
+
+      .subheader__locationLineOne {
+        font-size: 10px;
+      }
+
+      .subheader__locationLineTwo {
+        font-size: 13px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .subheader__nav {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    overflow: hidden;
+
+    .subheader__navOption {
+      margin: 0 10px;
+    }
+  }
+
+  .subheader__primeAdvertisement {
+    width: 400px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+  }
+}
