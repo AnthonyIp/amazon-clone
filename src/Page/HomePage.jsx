@@ -1,8 +1,20 @@
-import React   from 'react';
+import React, {useEffect, useState} from 'react';
+import Product                      from "../Components/Product";
 import './home.scss';
-import Product from "./Product";
 
 const HomePage = () => {
+    const [products, setProducts] = useState([]);
+
+    const fetchProducts = async () => {
+        await fetch('https://fakestoreapi.com/products')
+            .then(res => res.json())
+            .then(res => setProducts(res))
+    }
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
     return (
         <div className="home">
             <div className="home__container">
@@ -11,6 +23,13 @@ const HomePage = () => {
                 />
 
                 <div className="home__row">
+                    {/*{*/}
+                    {/*    products.map(product => (*/}
+                    {/*        <Product key={product.id} styleClass="home__product1"*/}
+                    {/*                 title={product.title} price={product.price} rating={4.5}*/}
+                    {/*                 image={product.image}/>*/}
+                    {/*    ))*/}
+                    {/*}*/}
                     <Product styleClass="home__product1"
                              title={"Rainforest Winter Jacket Blouson Homme"} price={124.99} rating={4.5}
                              image={"https://m.media-amazon.com/images/I/71FjD-cWdOL._AC_UL320_.jpg"}/>
@@ -26,7 +45,8 @@ const HomePage = () => {
                              image={"https://m.media-amazon.com/images/I/81q4PLOrhwL._AC_UL320_.jpg"}/>
                 </div>
                 <div className="home__row">
-                    <Product styleClass="home__product6" title={"Stan Smith M20324, Chaussures de Gymnastique Homme"} price={52.74} rating={4.5}
+                    <Product styleClass="home__product6" title={"Stan Smith M20324, Chaussures de Gymnastique Homme"}
+                             price={52.74} rating={4.5}
                              image={"https://m.media-amazon.com/images/I/61rigQzeh7L._AC_UL320_.jpg"}/>
                 </div>
             </div>
