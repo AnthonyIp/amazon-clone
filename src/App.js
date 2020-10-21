@@ -1,7 +1,7 @@
+import {Elements}                               from "@stripe/react-stripe-js";
+import {loadStripe}                             from '@stripe/stripe-js';
 import React, {useEffect}                       from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
-
 import './App.css';
 
 import Footer          from "./Components/Footer";
@@ -12,14 +12,17 @@ import {auth}          from "./firebase";
 import CheckoutPage    from "./Page/CheckoutPage";
 import HomePage        from "./Page/HomePage";
 import LoginPage       from "./Page/LoginPage";
+import OrdersPage      from "./Page/OrdersPage";
+import PageNotFound    from "./Page/PageNotFound";
+import PaymentPage     from "./Page/PaymentPage";
+
+const promise = loadStripe('pk_test_LRjOwcvlSbA6Im8zJZ4zHErj00UxY0jHvB');
 
 function App() {
     const [{}, dispatch] = useStateValue();
 
     useEffect(() => {
-        // will only run once when the app component loads...
         auth.onAuthStateChanged((authUser) => {
-            // console.log("THE USER IS >>> ", authUser);
             if (authUser) {
                 // the user just logged in / the user was logged in
                 dispatch({
@@ -41,11 +44,21 @@ function App() {
             <div className="App">
                 <Header/>
                 <SubHeader/>
-                <Switch>
-                    <Route exact path="/" component={HomePage}/>
-                    <Route exact path="/checkout" component={CheckoutPage}/>
-                    <Route exact path="/login" component={LoginPage}/>
-                </Switch>
+                <div className="content">
+
+                    <Switch>
+                        <Route exact path="/" component={HomePage}/>
+                        <Route exact path="/checkout" component={CheckoutPage}/>
+                        <Route exact path="/login" component={LoginPage}/>
+                        <Route exact path="/payment">
+                            <Elements stripe={promise}>
+                                <PaymentPage/>
+                            </Elements>
+                        </Route>
+                        <Route exact path="/orders" component={OrdersPage}/>
+                        <Route component={PageNotFound}/>
+                    </Switch>
+                </div>
                 <Footer/>
             </div>
         </Router>

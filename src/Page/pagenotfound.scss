@@ -1,0 +1,32 @@
+.pageNotFound {
+  padding         : 17% 5% 10% 5%;
+  text-align      : center;
+  background-size : cover;
+  background      : url("https://www.salehriaz.com/404Page/img/bg_purple.png") repeat-x left top;
+  height          : 100%;
+  overflow        : hidden;
+  color           : white;
+  text-decoration : none;
+
+  .pageNotFound__container {
+    background-size : contain;
+    background      : url("https://www.salehriaz.com/404Page/img/overlay_stars.svg") repeat left top;
+
+    .pageNotFound__image {
+      position       : relative;
+      z-index        : 100;
+      pointer-events : none;
+      width          : 300px;
+    }
+
+    p > a {
+      color : white !important;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+
+}

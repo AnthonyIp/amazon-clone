@@ -34,17 +34,19 @@ const Header = () => {
             </div>
 
             <div className="header__nav">
-                <Link to={!user && '/login'}>
+                <Link to={!user ? '/login' : ''}>
                     <div className="header__option" onClick={handleSignOut}>
                         <span className="header__optionLineOne">Bonjour, {user?.email || "identifiez-vous"}</span>
                         <span className="header__optionLinTwo">Compte et listes</span>
                     </div>
                 </Link>
 
-                <div className="header__option">
-                    <span className="header__optionLineOne">Retours</span>
-                    <span className="header__optionLinTwo">et Commandes</span>
-                </div>
+                <Link to={user ? '/orders' : ''}>
+                    <div className="header__option">
+                        <span className="header__optionLineOne">Retours</span>
+                        <span className="header__optionLinTwo">et Commandes</span>
+                    </div>
+                </Link>
                 <div className="header__option">
                     <span className="header__optionLineOne">Testez</span>
                     <span className="header__optionLinTwo">Prime</span>

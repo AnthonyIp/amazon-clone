@@ -17,12 +17,12 @@ const CheckoutPage = () => {
                     <h2 className='checkout__title'>Votre panier</h2>
                     {
                         basket.map((item) => (
-                            <CheckoutProduct
-                                id={item.id}
-                                title={item.title}
-                                image={item.image}
-                                price={item.price}
-                                rating={item.rating}
+                            <CheckoutProduct key={basket.indexOf(item)}
+                                             id={item.id}
+                                             title={item.title}
+                                             image={item.image}
+                                             price={item.price}
+                                             rating={item.rating}
                             />
                         ))
                     }
